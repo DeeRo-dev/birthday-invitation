@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, JSX } from "react";
 
 // Definir el tipo de timeLeft con nombres en español
 interface TimeLeft {
@@ -39,7 +39,7 @@ const Cronometro: React.FC = () => {
     return () => clearTimeout(timer);
   }, [timeLeft]); // Dependencia de `timeLeft` para actualizar cada vez que cambie
 
-  const timerComponents: any = [];
+  const timerComponents: JSX.Element[] = []; // Especificamos el tipo como JSX.Element[]
 
   Object.keys(timeLeft).forEach((interval) => {
     if (timeLeft[interval as keyof TimeLeft]) {

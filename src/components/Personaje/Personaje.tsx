@@ -1,11 +1,39 @@
-import React, { useState } from "react";
-import md5 from "crypto-js/md5"; // Importar md5 desde crypto-js
+"use client";
 
-const privateKey = process.env.NEXT_PUBLIC_MARVEL_PRIVATE_KEY; // Clave privada
-const publicKey = process.env.NEXT_PUBLIC_MARVEL_PUBLIC_KEY; // Clave pública
+import React, { useState } from "react";
+import Image from "next/image";
+import md5 from "crypto-js/md5";
+
+export interface MarvelHero {
+  id: number;
+  name: string;
+  description: string;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
+  urls: Array<{
+    type: string;
+    url: string;
+  }>;
+}
+
+export interface MarvelApiResponse {
+  code: number;
+  status: string;
+  data: {
+    offset: number;
+    limit: number;
+    total: number;
+    count: number;
+    results: MarvelHero[];
+  };
+}
+
+const privateKey = process.env.NEXT_PUBLIC_MARVEL_PRIVATE_KEY;
+const publicKey = process.env.NEXT_PUBLIC_MARVEL_PUBLIC_KEY;
 const baseURL = "https://gateway.marvel.com/v1/public/characters";
 
-// Lista de los personajes más conocidos de Marvel
 const marvelHeroes = [
   "Iron Man",
   "Captain America",
@@ -29,30 +57,44 @@ const marvelHeroes = [
   "Moon Knight",
 ];
 
-const MarvelRandomHero: React.FC = () => {
-  const [hero, setHero] = useState<any | null>(null);
+export default function MarvelRandomHero() {
+  const [hero, setHero] = useState<MarvelHero | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [clickCount, setClickCount] = useState(0);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [limitMessage, setLimitMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const fetchRandomHero = async () => {
+    if (clickCount >= 30) {
+      setButtonDisabled(true);
+      setLimitMessage("Se alcanzó el límite de pedidos de superhéroes.");
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
     try {
-      setError(null);
+      setClickCount((prev) => prev + 1);
 
       if (!publicKey || !privateKey) {
-        throw new Error("Las claves de la API no están configuradas correctamente.");
+        throw new Error(
+          "Las claves de la API no están configuradas correctamente."
+        );
       }
 
-      // Generar hash y timestamp
       const ts = new Date().getTime().toString();
-      const hash = md5(ts + privateKey + publicKey).toString(); // Usar md5 de crypto-js
+      const hash = md5(ts + privateKey + publicKey).toString();
+      const randomHero =
+        marvelHeroes[Math.floor(Math.random() * marvelHeroes.length)];
 
-      // Seleccionar un héroe aleatorio de la lista
-      const randomHero = marvelHeroes[Math.floor(Math.random() * marvelHeroes.length)];
-
-      // Obtener el héroe aleatorio de la API
       const response = await fetch(
-        `${baseURL}?apikey=${publicKey}&ts=${ts}&hash=${hash}&name=${encodeURIComponent(randomHero)}`
+        `${baseURL}?apikey=${publicKey}&ts=${ts}&hash=${hash}&name=${encodeURIComponent(
+          randomHero
+        )}`
       );
-      const data = await response.json();
+      const data: MarvelApiResponse = await response.json();
 
       if (data.code !== 200) {
         throw new Error(data.status || "Error desconocido.");
@@ -64,9 +106,15 @@ const MarvelRandomHero: React.FC = () => {
       }
 
       setHero(randomHeroData);
-    } catch (err: any) {
-      setError(err.message || "Ocurrió un error al obtener el superhéroe.");
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Ocurrió un error al obtener el superhéroe."
+      );
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -74,25 +122,46 @@ const MarvelRandomHero: React.FC = () => {
     <div className="text-center">
       <button
         onClick={fetchRandomHero}
-       className="bg-red-600/80 text-yellow-400 border-2 border-black w-56 rounded-full m-auto font-bold px-6 py-4 max-w-[350px]"
+        disabled={buttonDisabled || loading}
+        className="bg-red-600/80 text-yellow-400 border-2 border-black w-56 rounded-full m-auto font-bold px-6 py-4 max-w-[350px] hover:bg-red-700/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        aria-busy={loading}
       >
-        Obtener un superhéroe
+        {loading
+          ? "Cargando..."
+          : buttonDisabled
+          ? "Límite alcanzado"
+          : "Obtener un superhéroe"}
       </button>
-      {error && <p className="text-red-500 mt-4">{error}</p>}
+
+      {limitMessage && (
+        <p className="text-red-500 mt-4" role="alert">
+          {limitMessage}
+        </p>
+      )}
+
+      {error && (
+        <p className="text-red-500 mt-4" role="alert">
+          {error}
+        </p>
+      )}
+
       {hero && (
-        <div className="mt-4 bg-yellow-400/90 border-2 border-red-500 pt-4 rounded-xl w-11/12 m-auto">
-          <h2 className="text-xl font-bold">{hero.name}</h2>
+        <div className="mt-4 bg-yellow-400/90 p-1 border-2 border-red-500 flex flex-col pt-4 rounded-xl w-full m-auto">
+          <h2 className="text-xl font-bold mb-4">{hero.name}</h2>
           {hero.thumbnail && (
-            <img
-              src={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
-              alt={hero.name}
-              className="mt-2 rounded"
-            />
+            <div className="relative w-full aspect-square max-w-11/12 mx-auto">
+              <Image
+                src={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
+                alt={`Imagen de ${hero.name}`}
+                width={300}
+                height={300}
+                className="object-cover rounded w-full h-full"
+                priority
+              />
+            </div>
           )}
         </div>
       )}
     </div>
   );
-};
-
-export default MarvelRandomHero;
+}
