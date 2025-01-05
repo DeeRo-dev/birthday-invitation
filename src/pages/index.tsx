@@ -46,7 +46,7 @@ export default function Home() {
         />
         <div className="bg-red-500/90 text-yellow-400 border-2 border-black font-semibold w-full py-4 flex flex-col items-center justify-center">
           <h2 className="text-3xl">Lugar del evento</h2>
-          <p>Calle 11 Nro. 4537 Berazategui</p>
+          <p>Calle 11 Nro. 4537 Berazategui.</p>
         </div>
 
         <div className="flex bg-white text-black text-center w-[350px] h-[350px] rounded-xl">
