@@ -12,6 +12,10 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      backgroundImage: {
+        'hero-pattern': "url('/dyw.jpg')", // Ruta corregida
+        'bg-texture': "url('/img.jpg')", // Ruta ejemplo
+      },
     },
   },
   plugins: [],

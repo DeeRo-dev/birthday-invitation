@@ -1,5 +1,6 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+import ButtonsAgendar from "@/components/buttonsAgendar/ButtonsAgendar";
+import WhatsAppButton from "@/components/buttonWsp/ButtonWsp";
+import { Geist, Geist_Mono, Pacifico } from "next/font/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,104 +12,85 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const pacifico = Pacifico({
+  subsets: ["latin"], // Especifica el subset que necesitas
+  weight: "400", // Define el peso de la fuente (400 es el normal)
+});
+
+//Creame una funcion que tome el dia de hoy y calcule en forma de cronometro a la fecha del 19/01/2025 a las 16:00hs
+
 export default function Home() {
   return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/pages/index.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+    <main className="min-h-screen max-w-md flex flex-col m-auto pacifico ">
+      {/* Seccion 1 */}
+      <section className="min-h-screen bg-hero-pattern flex bg-cover bg-center h-64 w-full bg-black/50">
+        <div className="flex flex-col w-full items-center max-w-11/12 ">
+          <div className="rounded-full items-center mt-12 ">
+            <img
+              src={
+                "https://i.pinimg.com/736x/a4/8d/92/a48d92d09a72726541707eaf6b9b3cd3.jpg"
+              }
+              alt="not founbd"
+              width={100}
+              height={100}
+              className="w-56 h-56 rounded-full border-black border-2"
             />
-            Deploy now
-          </a>
+          </div>
+          <h1 className="text-5xl font-bold text-white mt-6">Dante Cabrera</h1>
+          <span className="text-xl">Te Invito a festejar mi cumple</span>
+          <div className="flex w-full mt-8 flex-col gap-4">
+            <div className="bg-black/50 w-full py-4 flex items-center justify-center">
+              <p>El dia Domingo 19 de Enero de 16.30hs a 19.30hs</p>{" "}
+            </div>
+            <div className="bg-black/50 w-full py-4 flex items-center justify-center">
+              <p>00:32:323:32</p>{" "}
+            </div>
+            <ButtonsAgendar />
+          </div>
+        </div>
+      </section>
+      {/* Seccion 2 Lugar del evento*/}
+      <section className="flex flex-col items-center gap-4 justify-center py-12 bg-bg-texture bg-cover bg-center">
+        <div className="flex flex-col gap-4 items-center">
+          <img
+            src={
+              "https://invitacionesvirtuales.net/assets/ohana-logo-316636818793424.png"
+            }
+            alt="not founbd"
+            width={300}
+            height={300}
+            className="w-64 h-48 rounded-full border-black cover border-2"
+          />
+          <h2 className="text-3xl">Lugar del evento</h2>
+          <p>Calle 11 Nro. 4537 Berazategui</p>
+        </div>
+        <div className="flex bg-white text-black text-center w-[350px] h-[350px] rounded-xl">
           <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
             target="_blank"
-            rel="noopener noreferrer"
+            className="p-0 w-full h-full"
+            href="https://www.google.com/maps/place/Calle+11+4537,+B1880AZA+Berazategui,+Provincia+de+Buenos+Aires/@-34.76077,-58.2167076,17.04z/data=!4m6!3m5!1s0x95a32f37aa560c8b:0xb73c9a1ff9a4af94!8m2!3d-34.760561!4d-58.2148254!16s%2Fg%2F11k7d4fz1j?hl=es-419&entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D"
           >
-            Read our docs
+            <img
+              src={"./direc.jpg"}
+              alt="not founbd"
+              width={300}
+              height={300}
+              className="w-auto h-full rounded-lg border-black cover border-2"
+            />
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
+        <p className="text-base">
+          No faltes te espero para compartir mi fiesta!
+        </p>
+        <WhatsAppButton />
+      </section>
+      {/* Seccion juego */}
+      <section></section>
+      <footer className="w-full bg-red-500 text-yellow-400 h-16 flex items-center justify-center">
+        <a target="_blank" href="https://derek-cabrera.vercel.app/">
+          <span className="text-base">Creado por Derek Cabrera</span>
         </a>
       </footer>
-    </div>
+    </main>
   );
 }
