@@ -26,7 +26,7 @@ export default function Home() {
           <span className="text-xl">Te Invito a festejar mi cumple</span>
           <div className="flex w-full mt-8 flex-col gap-4">
             <div className="bg-red-500/80 text-yellow-400 font-semibold w-full py-4 flex items-center justify-center">
-              <p>El dia Domingo 19 de Enero de 16.30hs a 19.30hs</p>
+              <p>El dia Domingo 19 de Enero de 16.30hs a 19.30hs.</p>
             </div>
             <div className="bg-red-500/80 text-yellow-400 font-semibold w-full py-4 flex items-center justify-center">
               <Cronometro />
