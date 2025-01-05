@@ -18,6 +18,7 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",  // <-- Agregar esta línea
     "paths": {
       "@/*": ["./src/*"]
     }
