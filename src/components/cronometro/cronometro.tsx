@@ -27,7 +27,7 @@ function calculateTimeLeft(): TimeLeft {
   return timeLeft;
 }
 
-const Cronometro: React.FC = () => {
+export default function Cronometro(): JSX.Element {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
 
   useEffect(() => {
@@ -62,4 +62,4 @@ const Cronometro: React.FC = () => {
   );
 };
 
-export default Cronometro;
+
