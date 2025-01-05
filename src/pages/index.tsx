@@ -1,10 +1,10 @@
 import ButtonsAgendar from "@/components/buttonsAgendar/ButtonsAgendar";
 import WhatsAppButton from "@/components/buttonWsp/ButtonWsp";
-import Cronometro from "@/components/cronometro/Cronometro";
 import MarvelRandomHero from "@/components/Personaje/Personaje";
 import pipiImage from "../../public/pipi.png"
 import direcImage from "../../public/direc.jpg" // Importar la imagen correctamente
 import Image from "next/image";
+import Cronometro from "@/components/cronometro/Cronometro";
 
 export default function Home() {
   return (
