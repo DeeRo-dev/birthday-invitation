@@ -1,5 +1,6 @@
 import ButtonsAgendar from "@/components/buttonsAgendar/ButtonsAgendar";
 import WhatsAppButton from "@/components/buttonWsp/ButtonWsp";
+import Cronometro from "@/components/cronometro/cronometro";
 import { Geist, Geist_Mono, Pacifico } from "next/font/google";
 
 const geistSans = Geist({
@@ -39,11 +40,12 @@ export default function Home() {
           <h1 className="text-5xl font-bold text-white mt-6">Dante Cabrera</h1>
           <span className="text-xl">Te Invito a festejar mi cumple</span>
           <div className="flex w-full mt-8 flex-col gap-4">
-            <div className="bg-black/50 w-full py-4 flex items-center justify-center">
+            <div className="bg-red-500/80 text-yellow-400 font-semibold w-full py-4 flex items-center justify-center">
               <p>El dia Domingo 19 de Enero de 16.30hs a 19.30hs</p>{" "}
             </div>
-            <div className="bg-black/50 w-full py-4 flex items-center justify-center">
-              <p>00:32:323:32</p>{" "}
+            <div className="bg-red-500/80 text-yellow-400 font-semibold w-full py-4 flex items-center justify-center">
+              {/* <p>00:32:323:32</p>{" "} */}
+              <Cronometro />
             </div>
             <ButtonsAgendar />
           </div>
@@ -61,8 +63,10 @@ export default function Home() {
             height={300}
             className="w-64 h-48 rounded-full border-black cover border-2"
           />
-          <h2 className="text-3xl">Lugar del evento</h2>
-          <p>Calle 11 Nro. 4537 Berazategui</p>
+          <div className="bg-red-500/90 text-yellow-400 font-semibold w-full py-4 flex flex-col items-center justify-center">
+            <h2 className="text-3xl">Lugar del evento</h2>
+            <p>Calle 11 Nro. 4537 Berazategui</p>
+          </div>
         </div>
         <div className="flex bg-white text-black text-center w-[350px] h-[350px] rounded-xl">
           <a
@@ -86,9 +90,9 @@ export default function Home() {
       </section>
       {/* Seccion juego */}
       <section></section>
-      <footer className="w-full bg-red-500 text-yellow-400 h-16 flex items-center justify-center">
+      <footer className="w-full bg-black text-yellow-400 h-16 flex items-center justify-center">
         <a target="_blank" href="https://derek-cabrera.vercel.app/">
-          <span className="text-base">Creado por Derek Cabrera</span>
+          <span className="text-base border-b border-yellow-300">Creado por Derek Cabrera</span>
         </a>
       </footer>
     </main>
