@@ -1,80 +1,98 @@
-// import React, { useState } from "react";
-// import md5 from "md5";
+import React, { useState } from "react";
+import md5 from "crypto-js/md5"; // Importar md5 desde crypto-js
 
-// // Definir el tipo de los datos de un héroe
-// interface Hero {
-//   name: string;
-//   description: string;
-//   thumbnail: {
-//     path: string;
-//     extension: string;
-//   };
-// }
+const privateKey = process.env.NEXT_PUBLIC_MARVEL_PRIVATE_KEY; // Clave privada
+const publicKey = process.env.NEXT_PUBLIC_MARVEL_PUBLIC_KEY; // Clave pública
+const baseURL = "https://gateway.marvel.com/v1/public/characters";
 
-// const RandomHeroButton: React.FC = () => {
-//   const [hero, setHero] = useState<Hero | null>(null); // Almacena el héroe o null
-//   const [loading, setLoading] = useState<boolean>(false); // Estado de carga
+// Lista de los personajes más conocidos de Marvel
+const marvelHeroes = [
+  "Iron Man",
+  "Captain America",
+  "Thor",
+  "Hulk",
+  "Black Widow",
+  "Spider-Man",
+  "Wolverine",
+  "Doctor Strange",
+  "Black Panther",
+  "Ant-Man",
+  "Vision",
+  "Scarlet Witch",
+  "Hawkeye",
+  "Deadpool",
+  "Silver Surfer",
+  "Punisher",
+  "Luke Cage",
+  "Daredevil",
+  "Captain Marvel",
+  "Moon Knight",
+];
 
-//   // Función para obtener un héroe aleatorio
-//   const getRandomHero = async (): Promise<void> => {
-//     setLoading(true);
-    
-//     // Claves de la API (reemplaza con tus propias claves)
-//     const publicKey = "tu_clave_publica";
-//     const privateKey = "tu_clave_privada";
+const MarvelRandomHero: React.FC = () => {
+  const [hero, setHero] = useState<any | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-//     // Generar el timestamp y el hash
-//     const ts = Date.now();
-//     const hash = md5(ts + privateKey + publicKey);
+  const fetchRandomHero = async () => {
+    try {
+      setError(null);
 
-//     // URL para la solicitud a la API de Marvel
-//     const url = `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+      if (!publicKey || !privateKey) {
+        throw new Error("Las claves de la API no están configuradas correctamente.");
+      }
 
-//     try {
-//       const response = await fetch(url);
-//       const data = await response.json();
+      // Generar hash y timestamp
+      const ts = new Date().getTime().toString();
+      const hash = md5(ts + privateKey + publicKey).toString(); // Usar md5 de crypto-js
 
-//       // Verifica que haya personajes en la respuesta
-//       if (data.data.results.length > 0) {
-//         // Seleccionar un personaje aleatorio
-//         const randomIndex = Math.floor(Math.random() * data.data.results.length);
-//         const randomHero = data.data.results[randomIndex];
+      // Seleccionar un héroe aleatorio de la lista
+      const randomHero = marvelHeroes[Math.floor(Math.random() * marvelHeroes.length)];
 
-//         setHero(randomHero); // Establecer el héroe aleatorio
-//       } else {
-//         console.error("No se encontraron personajes.");
-//       }
-//     } catch (error) {
-//       console.error("Error al obtener el héroe aleatorio", error);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
+      // Obtener el héroe aleatorio de la API
+      const response = await fetch(
+        `${baseURL}?apikey=${publicKey}&ts=${ts}&hash=${hash}&name=${encodeURIComponent(randomHero)}`
+      );
+      const data = await response.json();
 
-//   return (
-//     <div className="flex flex-col items-center">
-//       <button
-//         onClick={getRandomHero}
-//         className="bg-blue-500 text-white font-bold py-2 px-6 rounded-lg mt-5"
-//       >
-//         Traer Héroe Aleatorio
-//       </button>
+      if (data.code !== 200) {
+        throw new Error(data.status || "Error desconocido.");
+      }
 
-//       {loading && <p className="text-yellow-400 mt-3">Cargando...</p>}
+      const randomHeroData = data.data.results[0];
+      if (!randomHeroData) {
+        throw new Error("No se encontró el héroe.");
+      }
 
-//       {hero && !loading && (
-//         <div className="mt-5 text-center">
-//           <h2 className="text-2xl font-semibold text-yellow-400">{hero.name}</h2>
-//           <img
-//             src={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
-//             alt={hero.name}
-//             className="mt-3 w-48 h-48 object-cover rounded-lg"
-//           />
-//           <p className="text-white mt-3">{hero.description || "No hay descripción disponible."}</p>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
+      setHero(randomHeroData);
+    } catch (err: any) {
+      setError(err.message || "Ocurrió un error al obtener el superhéroe.");
+      console.error(err);
+    }
+  };
 
-// export default RandomHeroButton;
+  return (
+    <div className="text-center">
+      <button
+        onClick={fetchRandomHero}
+       className="bg-red-600/80 text-yellow-400 border-2 border-black w-56 rounded-full m-auto font-bold px-6 py-4 max-w-[350px]"
+      >
+        Obtener un superhéroe
+      </button>
+      {error && <p className="text-red-500 mt-4">{error}</p>}
+      {hero && (
+        <div className="mt-4 bg-yellow-400/90 border-2 border-red-500 pt-4 rounded-xl w-11/12 m-auto">
+          <h2 className="text-xl font-bold">{hero.name}</h2>
+          {hero.thumbnail && (
+            <img
+              src={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
+              alt={hero.name}
+              className="mt-2 rounded"
+            />
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default MarvelRandomHero;

@@ -1,6 +1,7 @@
 import ButtonsAgendar from "@/components/buttonsAgendar/ButtonsAgendar";
 import WhatsAppButton from "@/components/buttonWsp/ButtonWsp";
 import Cronometro from "@/components/cronometro/Cronometro";
+import MarvelRandomHero from "@/components/Personaje/Personaje";
 import { Geist, Geist_Mono, Pacifico } from "next/font/google";
 
 const geistSans = Geist({
@@ -26,18 +27,17 @@ export default function Home() {
       {/* Seccion 1 */}
       <section className="min-h-screen bg-hero-pattern flex bg-cover bg-center h-64 w-full bg-black/50">
         <div className="flex flex-col w-full items-center max-w-11/12 ">
-          <div className="rounded-full items-center mt-12 ">
+          <div className="relative rounded-full w-44 h-44 mt-12 bg-red-600 overflow-visible bg-deadpool border-2 border-red-600 bg-cover bg-left-bottom">
             <img
-              src={
-                "https://i.pinimg.com/736x/a4/8d/92/a48d92d09a72726541707eaf6b9b3cd3.jpg"
-              }
-              alt="not founbd"
-              width={100}
-              height={100}
-              className="w-56 h-56 rounded-full border-black border-2"
+              src="/pipi.png"
+              alt="not found"
+              width={600}
+              height={600}
+              className="absolute w-[300px] h-[300px] -left-5 top-0 transition-transform duration-500 ease-in-out hover:scale-110"
             />
           </div>
-          <h1 className="text-5xl font-bold text-white mt-6">Dante Cabrera</h1>
+
+          <h1 className="text-5xl font-bold text-white mt-24">Dante Cabrera</h1>
           <span className="text-xl">Te Invito a festejar mi cumple</span>
           <div className="flex w-full mt-8 flex-col gap-4">
             <div className="bg-red-500/80 text-yellow-400 font-semibold w-full py-4 flex items-center justify-center">
@@ -89,10 +89,18 @@ export default function Home() {
         <WhatsAppButton />
       </section>
       {/* Seccion juego */}
-      <section></section>
+      <section className="bg-bg-texture bg-cover bg-center flex flex-col items-center ">
+        <div className="flex flex-col bg-black/70 items-center w-full gap-4 py-12">
+        <h3 className="text-white text-xl font-bold">¿Te gustaria saber tu personaje de Marvel?</h3>
+          <span className="text-white">Vamos a jugar!</span>
+        <MarvelRandomHero/>
+        </div>
+      </section>
       <footer className="w-full bg-black text-yellow-400 h-16 flex items-center justify-center">
         <a target="_blank" href="https://derek-cabrera.vercel.app/">
-          <span className="text-base border-b border-yellow-300">Creado por Derek Cabrera</span>
+          <span className="text-base border-b border-yellow-300">
+            Creado por Derek Cabrera
+          </span>
         </a>
       </footer>
     </main>
