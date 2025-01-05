@@ -1,6 +1,6 @@
 import ButtonsAgendar from "@/components/buttonsAgendar/ButtonsAgendar";
 import WhatsAppButton from "@/components/buttonWsp/ButtonWsp";
-import Cronometro from "@/components/cronometro/cronometro";
+import Cronometro from "@/components/cronometro/Cronometro";
 import { Geist, Geist_Mono, Pacifico } from "next/font/google";
 
 const geistSans = Geist({
