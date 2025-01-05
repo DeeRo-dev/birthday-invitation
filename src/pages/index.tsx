@@ -4,7 +4,7 @@ import MarvelRandomHero from "@/components/Personaje/Personaje";
 import pipiImage from "../../public/pipi.png"
 import direcImage from "../../public/direc.jpg" // Importar la imagen correctamente
 import Image from "next/image";
-import Cronometro from "@/components/Cronometro/Cronometro";
+import Cronometro from "../components/Cronometro/Cronometro";
 
 export default function Home() {
   return (
