@@ -1,10 +1,11 @@
 import ButtonsAgendar from "@/components/buttonsAgendar/ButtonsAgendar";
 import WhatsAppButton from "@/components/buttonWsp/ButtonWsp";
 import MarvelRandomHero from "@/components/Personaje/Personaje";
-import pipiImage from "../../public/pipi.png"
-import direcImage from "../../public/direc.jpg" // Importar la imagen correctamente
+import pipiImage from "../../public/pipu.png";
+import direcImage from "../../public/direc.jpg"; // Importar la imagen correctamente
 import Image from "next/image";
-import Cronometro from "../components/Cronometro/Cronometro";
+// import Cronometro from "../components/Cronometro/Cronometro";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
@@ -12,24 +13,33 @@ export default function Home() {
       {/* Seccion 1 */}
       <section className="min-h-screen bg-hero-pattern flex bg-cover bg-center h-64 w-full bg-black/50">
         <div className="flex flex-col w-full items-center max-w-11/12 ">
-          <div className="relative rounded-full w-44 h-44 mt-12 bg-red-600 overflow-visible bg-deadpool border-2 border-red-600 bg-cover bg-left-bottom">
+          <div className="relative w-full h-48  bg-red-600 overflow-visible bg-portada border-b-2 border-red-600 bg-cover bg-left-bottom">
             <Image
               src={pipiImage}
               alt="not found"
-              width={600}
-              height={600}
-              className="absolute w-[300px] h-[300px] -left-5 top-0 transition-transform duration-500 ease-in-out hover:scale-110"
+              width={650}
+              height={300}
+              className="absolute w-[350px] h-[300px] left-10 top-4 transition-transform duration-500 ease-in-out hover:scale-110"
             />
           </div>
 
-          <h1 className="text-5xl font-bold text-white mt-24">Dante Cabrera</h1>
-          <span className="text-xl">Te Invito a festejar mi cumple</span>
+          <motion.h1
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="text-5xl font-bold text-white mt-32"
+          >
+            Dante Cabrera
+          </motion.h1>
+          <span className="text-xl text-white">
+            Te Invito a festejar mi cumple
+          </span>
           <div className="flex w-full mt-8 flex-col gap-4">
             <div className="bg-red-500/80 text-yellow-400 font-semibold w-full py-4 flex items-center justify-center">
-              <p>El dia Domingo 19 de Enero de 16.30hs a 19.30hs.</p>
+              <p>El día Domingo 19 de Enero de 16.30hs a 19.30hs.</p>
             </div>
             <div className="bg-red-500/80 text-yellow-400 font-semibold w-full py-4 flex items-center justify-center">
-              <Cronometro />
+              {/* <Cronometro /> */}
             </div>
             <ButtonsAgendar />
           </div>
@@ -37,13 +47,16 @@ export default function Home() {
       </section>
       {/* Seccion 2 Lugar del evento*/}
       <section className="flex flex-col items-center gap-4 justify-center py-12 bg-bg-texture bg-cover bg-center">
-        <Image
-          src="https://invitacionesvirtuales.net/assets/ohana-logo-316636818793424.png"
-          alt="Logo del lugar"
-          width={300}
-          height={300}
-          className="w-64 h-48 rounded-full border-black cover border-2"
-        />
+        <motion.div initial={{ scale: 0}} transition={{ duration: 0.8, ease: "easeInOut" }} whileInView={{ scale: 1 }} >
+          <Image
+            src="https://invitacionesvirtuales.net/assets/ohana-logo-316636818793424.png"
+            alt="Logo del lugar"
+            width={300}
+            height={300}
+            className="rounded-full border-black cover border-2"
+          />
+        </motion.div>
+
         <div className="bg-red-500/90 text-yellow-400 border-2 border-black font-semibold w-full py-4 flex flex-col items-center justify-center">
           <h2 className="text-3xl">Lugar del evento</h2>
           <p>Calle 11 Nro. 4537 Berazategui.</p>
@@ -69,20 +82,48 @@ export default function Home() {
           No faltes te espero para compartir mi fiesta!
         </p>
         <WhatsAppButton />
+        <div className="flex text-center py-4 text-white bg-black/70 w-full justify-center">
+          <a
+            href="https://wa.me/541166098973"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-base"
+          >
+            Contacto mamá de Dante:
+            <br />
+            <motion.span
+              className="border-b-2 font-bold text-3xl"
+              initial={{ scale: 1 }}
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              1166098973
+            </motion.span>
+          </a>
+        </div>
       </section>
       {/* Seccion juego */}
       <section className="bg-bg-texture bg-cover bg-center flex flex-col items-center ">
         <div className="flex flex-col bg-black/70 items-center w-full gap-4 py-12">
-          <h3 className="text-white text-xl font-bold">
-            Te gustaria saber tu personaje de Marvel?
-          </h3>
+          <motion.h3
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="text-white text-xl font-bold"
+          >
+            ¿Te gustaría saber tu personaje de Marvel?
+          </motion.h3>
           <span className="text-white">Vamos a jugar!</span>
           <MarvelRandomHero />
         </div>
       </section>
       <footer className="w-full bg-black text-yellow-400 h-16 flex items-center justify-center">
-        <a 
-          target="_blank" 
+        <a
+          target="_blank"
           href="https://derek-cabrera.vercel.app/"
           rel="noopener noreferrer"
         >
@@ -94,4 +135,3 @@ export default function Home() {
     </main>
   );
 }
-

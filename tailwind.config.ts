@@ -16,6 +16,7 @@ export default {
         'hero-pattern': "url('/dyw.jpg')", // Ruta corregida
         'bg-texture': "url('/img.jpg')", // Ruta ejemplo
         'deadpool': "url('/deadpool.jpg')", // Ruta ejemplo
+        'portada':"url('/happyd.jpg')"
       },
     },
   },
