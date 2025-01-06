@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState, JSX } from "react";
 
 // Definir el tipo de timeLeft con nombres en español
