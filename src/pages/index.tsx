@@ -2,6 +2,7 @@ import ButtonsAgendar from "@/components/buttonsAgendar/ButtonsAgendar";
 import WhatsAppButton from "@/components/buttonWsp/ButtonWsp";
 import MarvelRandomHero from "@/components/Personaje/Personaje";
 import pipiImage from "../../public/pipu.png";
+import confirm from "../../public/confirmd.png";
 import direcImage from "../../public/direc.jpg"; // Importar la imagen correctamente
 import Image from "next/image";
 // import Cronometro from "../components/Cronometro/Cronometro";
@@ -81,7 +82,24 @@ export default function Home() {
         <p className="text-base text-white">
           No faltes te espero para compartir mi fiesta!
         </p>
+        <div className="flex flex-col relative">
+          <motion.div 
+          initial={{ y: 100, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className=" absolute -top-14">
+             <Image
+            src={confirm}
+            alt="Logo del lugar"
+            width={300}
+            height={300}
+            className=" border-black cover"
+          />
+          </motion.div>
+           
         <WhatsAppButton />
+        </div>
+      
         <div className="flex text-center py-4 text-white bg-black/70 w-full justify-center">
           <a
             href="https://wa.me/541166098973"

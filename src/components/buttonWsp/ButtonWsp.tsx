@@ -18,7 +18,7 @@ const WhatsAppButton: React.FC = () => {
   return (
     <button
       onClick={handleClick}
-      className="bg-red-600/80 text-yellow-400 border-2 border-black w-56 rounded-full m-auto font-bold px-6 py-4 max-w-[350px]"
+      className="bg-red-600/80 text-yellow-400 border-2 mt-28 border-black w-56 rounded-full m-auto font-bold px-6 py-4 max-w-[350px]"
     >
       Confirmar mi asistencia
     </button>
