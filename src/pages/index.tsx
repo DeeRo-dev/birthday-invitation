@@ -90,7 +90,7 @@ export default function Home() {
             initial={{ y: 100, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className=" absolute -top-[208px]"
+            className=" absolute -top-[205px]"
           >
             <Image
               src={deadp}
