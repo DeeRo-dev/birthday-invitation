@@ -1,66 +1,69 @@
-"use client"
-import { useEffect, useState, JSX } from "react";
+'use client'
 
-// Definir el tipo de timeLeft con nombres en español
+import { useEffect, useState } from "react"
+
 interface TimeLeft {
-  Días?: number;
-  Horas?: number;
-  Minutos?: number;
-  Segundos?: number;
+  Días: number
+  Horas: number
+  Minutos: number
+  Segundos: number
 }
 
 function calculateTimeLeft(): TimeLeft {
-  const targetDate = new Date("2025-01-19T16:30:00");
-  const now = new Date();
-  const difference = targetDate.getTime() - now.getTime();
+  const targetDate = new Date("2025-01-19T16:30:00")
+  const now = new Date()
+  const difference = targetDate.getTime() - now.getTime()
 
-  let timeLeft: TimeLeft = {};
-
-  if (difference > 0) {
-    timeLeft = {
-      Días: Math.floor(difference / (1000 * 60 * 60 * 24)),
-      Horas: Math.floor((difference / (1000 * 60 * 60)) % 24),
-      Minutos: Math.floor((difference / 1000 / 60) % 60),
-      Segundos: Math.floor((difference / 1000) % 60),
-    };
+  if (difference <= 0) {
+    return {
+      Días: 0,
+      Horas: 0,
+      Minutos: 0,
+      Segundos: 0,
+    }
   }
 
-  return timeLeft;
+  return {
+    Días: Math.floor(difference / (1000 * 60 * 60 * 24)),
+    Horas: Math.floor((difference / (1000 * 60 * 60)) % 24),
+    Minutos: Math.floor((difference / 1000 / 60) % 60),
+    Segundos: Math.floor((difference / 1000) % 60),
+  }
 }
 
-export default function Reloj(): JSX.Element {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
+export default function Reloj() {
+  const [mounted, setMounted] = useState(false)
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft())
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
+    setMounted(true)
+    // Usar setInterval en lugar de setTimeout para actualizaciones continuas
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft())
+    }, 1000)
 
-    // Limpiar el temporizador al desmontarse el componente
-    return () => clearTimeout(timer);
-  }, [timeLeft]); // Dependencia de `timeLeft` para actualizar cada vez que cambie
+    return () => clearInterval(timer)
+  }, []) // Remover timeLeft de las dependencias para evitar actualizaciones innecesarias
 
-  const timerComponents: JSX.Element[] = []; // Especificamos el tipo como JSX.Element[]
+  // Prevenir hidratación incorrecta
+  if (!mounted) {
+    return (
+      <p className="text-yellow-400 text-base font-semibold">
+        Cargando...
+      </p>
+    )
+  }
 
-  Object.keys(timeLeft).forEach((interval) => {
-    if (timeLeft[interval as keyof TimeLeft]) {
-      timerComponents.push(
-        <span key={interval}>
-          {timeLeft[interval as keyof TimeLeft]} {interval}{" "}
-        </span>
-      );
-    }
-  });
+  const timerComponents = Object.entries(timeLeft).map(([interval, value]) => (
+    <span key={interval} className="mx-1">
+      {value} {interval}{" "}
+    </span>
+  ))
 
   return (
     <p className="text-yellow-400 text-base font-semibold">
-      {timerComponents.length ? (
-        timerComponents
-      ) : (
-        <span>¡Comenzó el evento!</span>
-      )}
+      {timerComponents.length ? timerComponents : <span>¡Comenzó el evento!</span>}
     </p>
-  );
-};
-
+  )
+}
 

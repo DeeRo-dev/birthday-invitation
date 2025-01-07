@@ -7,13 +7,31 @@ import direcImage from "../../public/direc.jpg"; // Importar la imagen correctam
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Reloj from "@/components/Reloj/Reloj";
+import ConfettiComponent from "@/components/Confetti/Confetti";
+import { Bangers, Montserrat } from "next/font/google";
+
+export const titleFont = Bangers({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+
+
+export const bodyFont = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export default function Home() {
   return (
-    <main className="min-h-screen max-w-md flex flex-col m-auto">
+    <main
+      className={`min-h-screen max-w-md flex flex-col m-auto ${bodyFont.className}`}
+    >
       {/* Seccion 1 */}
       <section className="min-h-screen bg-hero-pattern flex bg-cover bg-center h-64 w-full bg-black/50">
-        <div className="flex flex-col w-full items-center max-w-11/12 ">
+        <div className="flex flex-col w-full items-center max-w-11/12 relative">
+          <ConfettiComponent />
           <div className="relative w-full h-48  bg-red-600 overflow-visible bg-portada border-b-2 border-red-600 bg-cover bg-left-bottom">
             <Image
               src={pipiImage}
@@ -28,19 +46,19 @@ export default function Home() {
             initial={{ x: -50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="text-5xl font-bold text-white mt-32"
+            className={`text-6xl font-bold text-white mt-32 ${titleFont.className} drop-shadow-lg`}
           >
             Dante Cabrera
           </motion.h1>
-          <span className="text-xl text-white">
-            Te Invito a festejar mi cumple
+          <span className="text-xl text-white font-bold">
+            Te invito a festejar mi cumple
           </span>
           <div className="flex w-full mt-8 flex-col gap-4">
             <div className="bg-red-500/80 text-yellow-400 font-semibold w-full py-4 flex items-center justify-center">
-              <p>El día Domingo 19 de Enero de 16.30hs a 19.30hs.</p>
+              <p>El día domingo 19 de enero, de 16:30 hs a 19:30 hs.</p>
             </div>
             <div className="bg-red-500/80 text-yellow-400 font-semibold w-full py-4 flex items-center justify-center">
-              <Reloj/>
+              <Reloj />
             </div>
             <ButtonsAgendar />
           </div>
@@ -48,13 +66,20 @@ export default function Home() {
       </section>
       {/* Seccion 2 Lugar del evento*/}
       <section className="flex flex-col items-center gap-4 justify-center py-12 bg-bg-texture bg-cover bg-center">
-        <motion.div initial={{ scale: 0}} transition={{ duration: 0.8, ease: "easeInOut" }} whileInView={{ scale: 1 }} >
+        <motion.div
+          initial={{ scale: 0, rotate: -10 }} // Comienza pequeño y ligeramente inclinado
+          whileInView={{ scale: 1, rotate: 0 }} // Termina en su tamaño normal y posición original
+          transition={{
+            duration: 0.8,
+            ease: "easeInOut",
+          }}
+        >
           <Image
             src="https://invitacionesvirtuales.net/assets/ohana-logo-316636818793424.png"
             alt="Logo del lugar"
             width={300}
             height={300}
-            className="rounded-full border-black cover border-2"
+            className="rounded-full cover"
           />
         </motion.div>
 
@@ -75,31 +100,32 @@ export default function Home() {
               alt="Mapa de ubicación"
               width={350}
               height={350}
-              className="w-full h-full rounded-lg border-black object-cover"
+              className="w-full h-full rounded-lg border-yellow-400 border-2 object-cover"
             />
           </a>
         </div>
-        <p className="text-base text-white">
-          No faltes te espero para compartir mi fiesta!
+        <p className="text-base text-white font-bold">
+          ¡No faltes! Te espero para compartir mi fiesta.
         </p>
         <div className="flex flex-col relative">
-          <motion.div 
-          initial={{ y: 100, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className=" absolute -top-14">
-             <Image
-            src={confirm}
-            alt="Logo del lugar"
-            width={300}
-            height={300}
-            className=" border-black cover"
-          />
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className=" absolute -top-14"
+          >
+            <Image
+              src={confirm}
+              alt="Logo del lugar"
+              width={300}
+              height={300}
+              className=" border-black cover"
+            />
           </motion.div>
-           
-        <WhatsAppButton />
+
+          <WhatsAppButton />
         </div>
-      
+
         <div className="flex text-center py-4 text-white bg-black/70 w-full justify-center">
           <a
             href="https://wa.me/541166098973"
@@ -126,16 +152,16 @@ export default function Home() {
       </section>
       {/* Seccion juego */}
       <section className="bg-bg-texture bg-cover bg-center flex flex-col items-center ">
-        <div className="flex flex-col bg-black/70 items-center w-full gap-4 py-12">
+        <div className="flex flex-col bg-black/70 items-center text-center w-full gap-4 py-12">
           <motion.h3
             initial={{ x: -50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="text-white text-xl font-bold"
+            className="text-white text-lg font-bold"
           >
-            ¿Te gustaría saber tu personaje de Marvel?
+           ¿Te gustaría saber cuál sería tu personaje de Marvel?
           </motion.h3>
-          <span className="text-white">Vamos a jugar!</span>
+          <span className="text-white">¡Vamos a jugar! 🎉</span>
           <MarvelRandomHero />
         </div>
       </section>
