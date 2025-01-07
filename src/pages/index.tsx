@@ -6,7 +6,7 @@ import confirm from "../../public/confirmd.png";
 import direcImage from "../../public/direc.jpg"; // Importar la imagen correctamente
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Cronometro from "@/components/Cronometro/cronometro";
+import Reloj from "@/components/Reloj/Reloj";
 
 export default function Home() {
   return (
@@ -40,7 +40,7 @@ export default function Home() {
               <p>El día Domingo 19 de Enero de 16.30hs a 19.30hs.</p>
             </div>
             <div className="bg-red-500/80 text-yellow-400 font-semibold w-full py-4 flex items-center justify-center">
-              <Cronometro />
+              <Reloj/>
             </div>
             <ButtonsAgendar />
           </div>

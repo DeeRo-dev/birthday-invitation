@@ -28,7 +28,7 @@ function calculateTimeLeft(): TimeLeft {
   return timeLeft;
 }
 
-export default function Cronometro(): JSX.Element {
+export default function Reloj(): JSX.Element {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
 
   useEffect(() => {
