@@ -61,7 +61,7 @@ export default function Reloj() {
   ))
 
   return (
-    <p className="text-yellow-400 text-base font-semibold">
+    <p className="text-yellow-400 text-base font-semibold text-center">
       {timerComponents.length ? timerComponents : <span>¡Comenzó el evento!</span>}
     </p>
   )

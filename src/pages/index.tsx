@@ -51,11 +51,11 @@ export default function Home() {
           >
             Dante Cabrera
           </motion.h1>
-          <span className="text-xl text-white font-bold">
+          <span className="text-xl text-white font-bold text-center shadow-md py-2 bg-black/70 w-full">
             Te invito a festejar mi cumple
           </span>
           <div className="flex w-full mt-8 flex-col gap-4">
-            <div className="bg-red-500/80 text-yellow-400 font-semibold text-sm w-full py-4 flex items-center justify-center">
+            <div className="bg-red-500/80 text-yellow-400 text-center font-semibold text-sm w-full py-4 flex items-center justify-center">
               <p>El día domingo 19 de enero, de 16:30 hs a 19:30 hs.</p>
             </div>
             <div className="bg-red-500/80 text-yellow-400 font-semibold w-full py-4 flex items-center justify-center">
@@ -130,7 +130,7 @@ export default function Home() {
             initial={{ y: 100, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className=" absolute -top-14"
+            className=" absolute -top-4"
           >
             <Image
               src={confirm}
