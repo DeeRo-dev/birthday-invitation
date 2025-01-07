@@ -20,7 +20,7 @@ const ButtonsAgendar: React.FC = () => {
   return (
     <button
       onClick={handleClick}
-      className="bg-red-600/80 text-yellow-400 border-2 border-black w-56 rounded-full m-auto mt-12 font-bold px-6 py-4"
+      className="bg-red-600/80 text-yellow-400 border-2 border-black  rounded-full m-auto mt-12 font-bold px-6 py-4"
     >
       AGENDA MI CUMPLE!
     </button>

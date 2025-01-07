@@ -123,7 +123,7 @@ export default function MarvelRandomHero() {
       <button
         onClick={fetchRandomHero}
         disabled={buttonDisabled || loading}
-        className="bg-red-600/80 text-yellow-400 border-2 border-black w-56 rounded-full m-auto font-bold px-6 py-4 max-w-[350px] hover:bg-red-700/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="bg-red-600/80 text-yellow-400 border-2 border-black rounded-full m-auto font-bold px-6 py-4 max-w-[350px] hover:bg-red-700/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         aria-busy={loading}
       >
         {loading

@@ -2,6 +2,7 @@ import ButtonsAgendar from "@/components/buttonsAgendar/ButtonsAgendar";
 import WhatsAppButton from "@/components/buttonWsp/ButtonWsp";
 import MarvelRandomHero from "@/components/Personaje/Personaje";
 import pipiImage from "../../public/pipu.png";
+import deadp from "../../public/deadp.png";
 import confirm from "../../public/confirmd.png";
 import direcImage from "../../public/direc.jpg"; // Importar la imagen correctamente
 import Image from "next/image";
@@ -36,9 +37,9 @@ export default function Home() {
             <Image
               src={pipiImage}
               alt="not found"
-              width={650}
+              width={320}
               height={300}
-              className="absolute w-[350px] h-[300px] left-10 top-4 transition-transform duration-500 ease-in-out hover:scale-110"
+              className="absolute w-[300px] h-[300px] left-10 top-7 transition-transform duration-500 ease-in-out hover:scale-110"
             />
           </div>
 
@@ -54,7 +55,7 @@ export default function Home() {
             Te invito a festejar mi cumple
           </span>
           <div className="flex w-full mt-8 flex-col gap-4">
-            <div className="bg-red-500/80 text-yellow-400 font-semibold w-full py-4 flex items-center justify-center">
+            <div className="bg-red-500/80 text-yellow-400 font-semibold text-sm w-full py-4 flex items-center justify-center">
               <p>El día domingo 19 de enero, de 16:30 hs a 19:30 hs.</p>
             </div>
             <div className="bg-red-500/80 text-yellow-400 font-semibold w-full py-4 flex items-center justify-center">
@@ -83,8 +84,25 @@ export default function Home() {
           />
         </motion.div>
 
-        <div className="bg-red-500/90 text-yellow-400 border-2 border-black font-semibold w-full py-4 flex flex-col items-center justify-center">
+        <div className="bg-red-500/90 mt-28 relative text-yellow-400 border-2 border-black font-semibold w-full py-4 flex flex-col items-center justify-center">
+  
+        <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className=" absolute -top-[206px]"
+          >
+            <Image
+              src={deadp}
+              alt="Logo del lugar"
+              width={300}
+              height={300}
+              className=" border-black cover"
+            />
+          </motion.div>
           <h2 className="text-3xl">Lugar del evento</h2>
+  
+          
           <p>Calle 11 Nro. 4537 Berazategui.</p>
         </div>
 
