@@ -150,7 +150,7 @@ export function SoccerGame() {
   }, [])
 
   return (
-    <div className="flex flex-col w-full items-center justify-center min-h-screen bg-emerald-600 p-4">
+    <div className="flex flex-col w-full items-center justify-center h-[60vh] bg-emerald-600 p-4">
       {/* Marcador */}
       <div className="mb-4 text-center">
         <motion.div
