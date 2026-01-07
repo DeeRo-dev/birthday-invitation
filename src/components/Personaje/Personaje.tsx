@@ -123,7 +123,7 @@ export default function MarvelRandomHero() {
       <button
         onClick={fetchRandomHero}
         disabled={buttonDisabled || loading}
-        className="bg-red-600/80 text-yellow-400 border-2 border-black rounded-full m-auto font-bold px-6 py-4 max-w-[350px] hover:bg-red-700/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="bg-custom-blue/80 text-custom-yellow border-2 border-black rounded-full m-auto font-bold px-6 py-4 max-w-[350px] hover:bg-custom-blue/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         aria-busy={loading}
       >
         {loading
@@ -134,19 +134,19 @@ export default function MarvelRandomHero() {
       </button>
 
       {limitMessage && (
-        <p className="text-red-500 mt-4" role="alert">
+        <p className="text-custom-blue mt-4" role="alert">
           {limitMessage}
         </p>
       )}
 
       {error && (
-        <p className="text-red-500 mt-4" role="alert">
+        <p className="text-custom-blue mt-4" role="alert">
           {error}
         </p>
       )}
 
       {hero && (
-        <div className="mt-4 bg-yellow-400/90 p-1 border-2 border-red-500 flex flex-col pt-4 rounded-xl w-full m-auto">
+        <div className="mt-4 bg-custom-yellow/90 p-1 border-2 border-custom-blue flex flex-col pt-4 rounded-xl w-full m-auto">
           <h2 className="text-xl font-bold mb-4">{hero.name}</h2>
           {hero.thumbnail && (
             <div className="relative w-full aspect-square max-w-11/12 mx-auto">

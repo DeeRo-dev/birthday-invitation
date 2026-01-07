@@ -3,9 +3,9 @@ import React from "react";
 
 const ButtonsAgendar: React.FC = () => {
   const handleClick = () => {
-    // Fecha y hora de inicio (4:30 PM a 7:30 PM en hora de Argentina)
-    const startDate = "20250119T163000-0300"; // 4:30 PM (hora local Argentina -03:00)
-    const endDate = "20250119T193000-0300"; // 7:30 PM (hora local Argentina -03:00)
+    // Fecha y hora de inicio (18:00 hs a 21:00 hs en hora de Argentina)
+    const startDate = "20260113T180000-0300"; // 18:00 hs (hora local Argentina -03:00)
+    const endDate = "20260113T210000-0300"; // 21:00 hs (hora local Argentina -03:00)
     const eventTitle = "Cumpleaños de Dante Cabrera"; // Título del evento
     const eventDescription = "Invitación al cumple"; // Descripción del evento
 
@@ -20,7 +20,7 @@ const ButtonsAgendar: React.FC = () => {
   return (
     <button
       onClick={handleClick}
-      className="bg-red-600/80 text-yellow-400 border-2 border-black  rounded-full m-auto mt-12 font-bold px-6 py-4"
+      className="bg-custom-blue/80 text-custom-yellow border-2 border-black  rounded-full m-auto font-bold px-6 py-4"
     >
       AGENDA MI CUMPLE!
     </button>

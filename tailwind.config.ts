@@ -11,12 +11,14 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "custom-yellow": "#f3b229",
+        "custom-blue": "#103f79",
       },
       backgroundImage: {
-        'hero-pattern': "url('/dyw.jpg')", // Ruta corregida
+        'hero-pattern': "url('/banderaboca.jpg')", // Ruta corregida
         'bg-texture': "url('/img.jpg')", // Ruta ejemplo
-        'deadpool': "url('/deadpool.jpg')", // Ruta ejemplo
-        'portada':"url('/happyd.jpg')"
+        'deadpool': "url('/escudo.jpg')", // Ruta ejemplo
+        'portada':"url('/boca1.jpg')"
       },
     },
   },

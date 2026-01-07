@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Windows
+nul
+
+# npm lock (using pnpm)
+package-lock.json

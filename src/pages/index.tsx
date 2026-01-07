@@ -1,15 +1,15 @@
 import ButtonsAgendar from "@/components/buttonsAgendar/ButtonsAgendar";
 import WhatsAppButton from "@/components/buttonWsp/ButtonWsp";
-import MarvelRandomHero from "@/components/Personaje/Personaje";
-import pipiImage from "../../public/pipu.png";
+import pipiImage from "../../public/danBoca.png";
 import deadp from "../../public/deadp.png";
-import confirm from "../../public/confirmd.png";
-import direcImage from "../../public/direc.jpg"; // Importar la imagen correctamente
+import confirm from "../../public/escudo.png";
+import direcImage from "../../public/direc.jpeg"; // Importar la imagen correctamente
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Reloj from "@/components/Reloj/Reloj";
 import ConfettiComponent from "@/components/Confetti/Confetti";
 import { Bangers, Montserrat } from "next/font/google";
+import { SoccerGame } from "@/components/game/soccer-game";
 
 export const titleFont = Bangers({
   weight: "400",
@@ -27,19 +27,19 @@ export const bodyFont = Montserrat({
 export default function Home() {
   return (
     <main
-      className={`min-h-screen max-w-md flex flex-col m-auto ${bodyFont.className}`}
+      className={`min-h-screen bg-hero-pattern bg-center max-w-md flex flex-col m-auto ${bodyFont.className}`}
     >
       {/* Seccion 1 */}
-      <section className="min-h-screen bg-hero-pattern flex bg-cover bg-center h-64 w-full bg-black/50">
+      <section className="min-h-screen  flex bg-center h-64 w-full bg-black/50">
         <div className="flex flex-col w-full items-center max-w-11/12 relative">
           <ConfettiComponent />
-          <div className="relative w-full h-48  bg-red-600 overflow-visible bg-portada border-b-2 border-red-600 bg-cover bg-left-bottom">
+          <div className="relative w-full h-[392px] overflow-visible bg-portada border-b-2 bg-cover bg-center">
             <Image
               src={pipiImage}
               alt="not found"
               width={320}
               height={300}
-              className="absolute w-[300px] h-[300px] left-10 top-7 transition-transform duration-500 ease-in-out hover:scale-110"
+              className="absolute w-[400px] h-[500px] left-16 top-16 transition-transform duration-500 ease-in-out hover:scale-110"
             />
           </div>
 
@@ -55,10 +55,10 @@ export default function Home() {
             Te invito a festejar mi cumple
           </span>
           <div className="flex w-full mt-8 flex-col gap-4">
-            <div className="bg-red-500/80 text-yellow-400 text-center font-semibold text-sm w-full py-4 flex items-center justify-center">
-              <p>El día domingo 19 de enero, de 16:30 hs a 19:30 hs.</p>
+            <div className="bg-custom-blue/80 text-custom-yellow text-center font-semibold text-sm w-full py-4 flex items-center justify-center">
+              <p>El día martes 13 de enero, de 18:00 hs a 21:00 hs.</p>
             </div>
-            <div className="bg-red-500/80 text-yellow-400 font-semibold w-full py-4 flex items-center justify-center">
+            <div className="bg-custom-blue/80 text-custom-yellow font-semibold w-full py-4 flex items-center justify-center">
               <Reloj />
             </div>
             <ButtonsAgendar />
@@ -66,7 +66,7 @@ export default function Home() {
         </div>
       </section>
       {/* Seccion 2 Lugar del evento*/}
-      <section className="flex flex-col items-center gap-4 justify-center py-12 bg-bg-texture bg-cover bg-center">
+      <section className="flex flex-col items-center gap-4 justify-center py-12 bg-cover bg-center">
         <motion.div
           initial={{ scale: 0, rotate: -10 }} // Comienza pequeño y ligeramente inclinado
           whileInView={{ scale: 1, rotate: 0 }} // Termina en su tamaño normal y posición original
@@ -76,15 +76,15 @@ export default function Home() {
           }}
         >
           <Image
-            src="https://invitacionesvirtuales.net/assets/ohana-logo-316636818793424.png"
+            src={"/logo.png"}
             alt="Logo del lugar"
-            width={300}
-            height={300}
+            width={200}
+            height={200}
             className="rounded-full cover"
           />
         </motion.div>
 
-        <div className="bg-red-500/90 mt-28 relative text-yellow-400 border-2 border-black font-semibold w-full py-4 flex flex-col items-center justify-center">
+        <div className="bg-custom-blue/90 mt-28 relative text-custom-yellow border-2 border-black font-semibold w-full py-4 flex flex-col items-center justify-center">
   
         <motion.div
             initial={{ y: 100, opacity: 0 }}
@@ -102,15 +102,19 @@ export default function Home() {
           </motion.div>
           <h2 className="text-3xl">Lugar del evento</h2>
   
-          
-          <p>Calle 11 Nro. 4537 Berazategui.</p>
+            <a
+            target="_blank"
+            href="https://www.google.com/maps/place/Le+Park+Entretenimientos+-+Berazategui/@-34.7605297,-58.2091448,17z/data=!3m1!4b1!4m6!3m5!1s0x95a32f495389039d:0x18cd5781cac54578!8m2!3d-34.7605341!4d-58.2065699!16s%2Fg%2F11c1tlf3j4?entry=ttu&g_ep=EgoyMDI2MDEwNC4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D"
+            rel="noopener noreferrer"
+          >    <p className="border-b border-custom-yellow font-light">Av. 14 Pres. Juan Domingo Perón 5045, Berazategui.</p></a>
+         
         </div>
 
         <div className="flex bg-white text-black text-center w-[350px] h-[350px] rounded-xl">
           <a
             target="_blank"
             className="p-0 w-full h-full"
-            href="https://www.google.com/maps/place/Calle+11+4537,+B1880AZA+Berazategui,+Provincia+de+Buenos+Aires/@-34.76077,-58.2167076,17.04z/data=!4m6!3m5!1s0x95a32f37aa560c8b:0xb73c9a1ff9a4af94!8m2!3d-34.760561!4d-58.2148254!16s%2Fg%2F11k7d4fz1j?hl=es-419&entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D"
+            href="https://www.google.com/maps/place/Le+Park+Entretenimientos+-+Berazategui/@-34.7605297,-58.2091448,17z/data=!3m1!4b1!4m6!3m5!1s0x95a32f495389039d:0x18cd5781cac54578!8m2!3d-34.7605341!4d-58.2065699!16s%2Fg%2F11c1tlf3j4?entry=ttu&g_ep=EgoyMDI2MDEwNC4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D"
             rel="noopener noreferrer"
           >
             <Image
@@ -118,26 +122,25 @@ export default function Home() {
               alt="Mapa de ubicación"
               width={350}
               height={350}
-              className="w-full h-full rounded-lg border-yellow-400 border-2 object-cover"
+              className="w-full h-full rounded-lg border-custom-yellow border-2 object-cover"
             />
           </a>
         </div>
         <p className="text-base text-white font-bold">
           ¡No faltes! Te espero para compartir mi fiesta.
         </p>
-        <div className="flex flex-col relative">
+        <div className="flex flex-col items-center relative">
           <motion.div
             initial={{ y: 100, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className=" absolute -top-4"
+            className=" absolute "
           >
             <Image
               src={confirm}
               alt="Logo del lugar"
-              width={300}
-              height={300}
-              className=" border-black cover"
+              width={200}
+              height={200}
             />
           </motion.div>
 
@@ -169,7 +172,7 @@ export default function Home() {
         </div>
       </section>
       {/* Seccion juego */}
-      <section className="bg-bg-texture bg-cover bg-center flex flex-col items-center ">
+      <section className="bg-cover bg-center flex flex-col items-center ">
         <div className="flex flex-col bg-black/70 items-center text-center w-full gap-4 py-12">
           <motion.h3
             initial={{ x: -50, opacity: 0 }}
@@ -177,19 +180,19 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeInOut" }}
             className="text-white text-lg font-bold"
           >
-           ¿Te gustaría saber cuál sería tu personaje de Marvel?
+           ¿Te gustaría jugar?
           </motion.h3>
           <span className="text-white">¡Vamos a jugar! 🎉</span>
-          <MarvelRandomHero />
+          <SoccerGame />
         </div>
       </section>
-      <footer className="w-full bg-black text-yellow-400 h-16 flex items-center justify-center">
+      <footer className="w-full bg-black text-custom-yellow h-16 flex items-center justify-center">
         <a
           target="_blank"
           href="https://derek-cabrera.vercel.app/"
           rel="noopener noreferrer"
         >
-          <span className="text-base border-b border-yellow-300">
+          <span className="text-base border-b" style={{borderColor: '#f3b229'}}>
             Creado por Derek Cabrera
           </span>
         </a>

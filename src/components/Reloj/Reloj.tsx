@@ -10,7 +10,7 @@ interface TimeLeft {
 }
 
 function calculateTimeLeft(): TimeLeft {
-  const targetDate = new Date("2025-01-19T16:30:00")
+  const targetDate = new Date("2026-01-13T18:00:00")
   const now = new Date()
   const difference = targetDate.getTime() - now.getTime()
 
@@ -48,7 +48,7 @@ export default function Reloj() {
   // Prevenir hidratación incorrecta
   if (!mounted) {
     return (
-      <p className="text-yellow-400 text-base font-semibold">
+      <p className="text-custom-yellow text-base font-semibold">
         Cargando...
       </p>
     )
@@ -61,7 +61,7 @@ export default function Reloj() {
   ))
 
   return (
-    <p className="text-yellow-400 text-base font-semibold text-center">
+    <p className="text-custom-yellow text-base font-semibold text-center">
       {timerComponents.length ? timerComponents : <span>¡Comenzó el evento!</span>}
     </p>
   )
