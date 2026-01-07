@@ -1,10 +1,6 @@
 import ButtonsAgendar from "@/components/buttonsAgendar/ButtonsAgendar";
 import WhatsAppButton from "@/components/buttonWsp/ButtonWsp";
-import pipiImage from "../../public/danBoca.png";
-import deadp from "../../public/deadp.png";
-import confirm from "../../public/escudo.png";
-import direcImage from "../../public/direc.jpeg"; // Importar la imagen correctamente
-import Image from "next/image";
+import Image from 'next/image'
 import { motion } from "framer-motion";
 import Reloj from "@/components/Reloj/Reloj";
 import ConfettiComponent from "@/components/Confetti/Confetti";
@@ -17,29 +13,29 @@ export const titleFont = Bangers({
   display: "swap",
 });
 
-
-
 export const bodyFont = Montserrat({
   subsets: ["latin"],
   display: "swap",
 });
 
+
+
 export default function Home() {
   return (
     <main
-      className={`min-h-screen bg-hero-pattern bg-center max-w-md flex flex-col m-auto ${bodyFont.className}`}
+      className={`min-h-screen max-w-[900px] bg-hero-pattern bg-center w-full flex flex-col m-auto ${bodyFont.className}`}
     >
       {/* Seccion 1 */}
       <section className="min-h-screen  flex bg-center h-64 w-full bg-black/50">
         <div className="flex flex-col w-full items-center max-w-11/12 relative">
           <ConfettiComponent />
-          <div className="relative w-full h-[392px] overflow-visible bg-portada border-b-2 bg-cover bg-center">
+          <div className="relative w-full items-center justify-center h-[392px] overflow-visible bg-portada border-b-2 bg-cover bg-center">
             <Image
-              src={pipiImage}
+              src="/danBoca.png"
               alt="not found"
               width={320}
               height={300}
-              className="absolute w-[400px] h-[500px] left-16 top-16 transition-transform duration-500 ease-in-out hover:scale-110"
+              className="absolute m-auto w-[400px] h-[500px] left-16 top-16 transition-transform duration-500 ease-in-out hover:scale-110"
             />
           </div>
 
@@ -93,7 +89,7 @@ export default function Home() {
             className=" absolute -top-[205px]"
           >
             <Image
-              src={deadp}
+              src="/deadp.png"
               alt="Logo del lugar"
               width={300}
               height={300}
@@ -110,7 +106,7 @@ export default function Home() {
          
         </div>
 
-        <div className="flex bg-white text-black text-center w-[350px] h-[350px] rounded-xl">
+        <div className="flex bg-white text-black text-center w-full max-w-[350px] h-[350px] rounded-xl mx-auto">
           <a
             target="_blank"
             className="p-0 w-full h-full"
@@ -118,7 +114,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <Image
-              src={direcImage} // Usar la imagen importada
+              src="/direc.jpeg"
               alt="Mapa de ubicación"
               width={350}
               height={350}
@@ -137,7 +133,7 @@ export default function Home() {
             className=" absolute "
           >
             <Image
-              src={confirm}
+              src="/escudo.png"
               alt="Logo del lugar"
               width={200}
               height={200}
