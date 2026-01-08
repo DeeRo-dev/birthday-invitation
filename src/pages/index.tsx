@@ -35,7 +35,7 @@ export default function Home() {
               alt="not found"
               width={320}
               height={300}
-              className="absolute m-auto w-[400px] h-[500px] left-16 top-16 transition-transform duration-500 ease-in-out hover:scale-110"
+              className="absolute m-auto w-[250px] h-[300px] left-16 top-16 transition-transform duration-500 ease-in-out hover:scale-110"
             />
           </div>
 
@@ -81,8 +81,8 @@ export default function Home() {
         </motion.div>
 
         <div className="bg-custom-blue/90 mt-28 relative text-custom-yellow border-2 border-black font-semibold w-full py-4 flex flex-col items-center justify-center">
-  
-        <motion.div
+
+          <motion.div
             initial={{ y: 100, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -97,13 +97,13 @@ export default function Home() {
             />
           </motion.div>
           <h2 className="text-3xl">Lugar del evento</h2>
-  
-            <a
+
+          <a
             target="_blank"
             href="https://www.google.com/maps/place/Le+Park+Entretenimientos+-+Berazategui/@-34.7605297,-58.2091448,17z/data=!3m1!4b1!4m6!3m5!1s0x95a32f495389039d:0x18cd5781cac54578!8m2!3d-34.7605341!4d-58.2065699!16s%2Fg%2F11c1tlf3j4?entry=ttu&g_ep=EgoyMDI2MDEwNC4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D"
             rel="noopener noreferrer"
           >    <p className="border-b border-custom-yellow font-light">Av. 14 Pres. Juan Domingo Perón 5045, Berazategui.</p></a>
-         
+
         </div>
 
         <div className="flex bg-white text-black text-center w-full max-w-[350px] h-[350px] rounded-xl mx-auto">
@@ -176,7 +176,7 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeInOut" }}
             className="text-white text-lg font-bold"
           >
-           ¿Te gustaría jugar?
+            ¿Te gustaría jugar?
           </motion.h3>
           <span className="text-white">¡Vamos a jugar! 🎉</span>
           <SoccerGame />
@@ -188,7 +188,7 @@ export default function Home() {
           href="https://derek-cabrera.vercel.app/"
           rel="noopener noreferrer"
         >
-          <span className="text-base border-b" style={{borderColor: '#f3b229'}}>
+          <span className="text-base border-b" style={{ borderColor: '#f3b229' }}>
             Creado por Derek Cabrera
           </span>
         </a>
